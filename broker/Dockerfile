@@ -1,9 +1,11 @@
-FROM alpine:3.11
+FROM docker:19.03
 
+RUN apk add "docker-compose" --no-cache
 RUN apk add "dbus" --no-cache
+RUN apk add --no-cache syslog-ng
 
-RUN mkdir -p "/broker"
-COPY ["broker.conf", "/broker/broker.conf"]
+COPY ["./syslog-ng/", "/"]
+COPY ["./dbus/", "/broker/dbus"]
 
-ENTRYPOINT ["dbus-daemon"]
-CMD ["--config-file=/broker/broker.conf", "--nofork", "--nosyslog"]
+ENTRYPOINT []
+CMD ["dbus-daemon", "--config-file=/broker/dbus/broker.conf", "--nofork", "--nosyslog"]

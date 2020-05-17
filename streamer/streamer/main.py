@@ -58,11 +58,13 @@ class StreamerObject(Object):
             for frame_bytes in iter(lambda: process.stdout.read(3 * self.size.width * self.size.height), b""):
                 print(f"Emitting frame... (length={len(frame_bytes)})", flush=True)
                 self.FrameEmitted(frame_bytes)
-                #print(frame_bytes)
-                #sleep(1)
 
         thread = Thread(target=thread_target)
         thread.start()
+
+    @method(DBUS_INTERFACE, in_signature="s", out_signature="s")
+    def Capitalize(self, text):
+        return text.capitalize()
 
 
 def main():

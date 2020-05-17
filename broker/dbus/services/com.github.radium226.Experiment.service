@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.github.radium226.Experiment
+Exec=/usr/bin/docker-compose --file "/broker/docker-compose/docker-compose.yml" --project-name "dbus-experiments" start "streamer"
+User=root

@@ -3,8 +3,18 @@ services:
 
   broker:
     build: "./broker"
+    image: "broker:0.1.0"
     ports:
     - 12345:12345
+    volumes:
+    - "/var/run/docker.sock:/var/run/docker.sock:rw"
+    - ".:/broker/docker-compose:ro"
+    environment:
+      UID: "${UID}"
+      GID: "${GID}"
+      DISPLAY: "${DISPLAY}"
+    devices:
+    - /dev/dri:/dev/dr
   
   streamer:
     build: 

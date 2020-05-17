@@ -17,6 +17,8 @@ from functools import partial
 
 from subprocess import Popen, PIPE
 
+from time import sleep
+
 
 DBUS_ADDRESS = "tcp:host=broker,port=12345"
 
@@ -48,12 +50,16 @@ def main():
     mainloop = GLib.MainLoop()
     DBusGMainLoop(set_as_default=True)
 
+    sleep(10)
+
     bus = BusConnection(getenv("DBUS_ADDRESS") or DBUS_ADDRESS)
     remote_object = bus.get_object(BUS_NAME, OBJECT_PATH)
 
     process = Popen(ffplay_command(size), stdin=PIPE)
     remote_object.connect_to_signal("FrameEmitted", partial(handle_frame, process.stdin), dbus_interface=DBUS_INTERFACE)
     remote_object.EmitFrames()
+
+    #print(remote_object.Capitalize("hello world"))
     
     print("Starting player... ", flush=True)
     mainloop.run()
