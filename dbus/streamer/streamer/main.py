@@ -56,7 +56,6 @@ class StreamerObject(Object):
         def thread_target():
             process = Popen(ffmpeg_command(self.file_path, self.size), stdout=PIPE)
             for frame_bytes in iter(lambda: process.stdout.read(3 * self.size.width * self.size.height), b""):
-                print(f"Emitting frame... (length={len(frame_bytes)})", flush=True)
                 self.FrameEmitted(frame_bytes)
 
         thread = Thread(target=thread_target)
