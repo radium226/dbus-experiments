@@ -1,0 +1,50 @@
+[[package]]
+category = "main"
+description = "Composable command line interface toolkit"
+name = "click"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "7.1.2"
+
+[[package]]
+category = "main"
+description = "'A Python click type which is similar to click.Path but returns a pathlib Path'"
+name = "click-pathlib"
+optional = false
+python-versions = "*"
+version = "2020.3.13.0"
+
+[package.dependencies]
+click = ">=7.0"
+
+[package.extras]
+dev = ["PyGithub (1.46)", "autoflake (1.3.1)", "check-manifest (0.41)", "codecov (2.0.16)", "flake8-commas (2.0.0)", "flake8-quotes (2.1.1)", "flake8 (3.7.9)", "isort (4.3.21)", "mypy (0.770)", "pip-check-reqs-pip-gte-20 (2.0.3.1)", "pydocstyle (5.0.2)", "pyenchant (3.0.1)", "pylint (2.4.4)", "pyroma (2.6)", "pytest-cov (2.8.1)", "pytest (5.4.0)", "twine (3.1.1)", "vulture (1.3)", "yapf (0.29.0)"]
+
+[[package]]
+category = "main"
+description = "Python client for Redis key-value store"
+name = "redis"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "3.5.2"
+
+[package.extras]
+hiredis = ["hiredis (>=0.1.3)"]
+
+[metadata]
+content-hash = "ac3e3b446a1b0a174d7ff2479d319a32576a0b9ed2c343f98b5c755c634a6a7d"
+python-versions = "^3.8"
+
+[metadata.files]
+click = [
+    {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
+    {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
+]
+click-pathlib = [
+    {file = "click-pathlib-2020.3.13.0.tar.gz", hash = "sha256:e74a7a209699107d6aa884b3070e1f81e67dea10acf2244fbd3a4eafad207c1c"},
+    {file = "click_pathlib-2020.3.13.0-py3-none-any.whl", hash = "sha256:37faab20677ce754176378cd9be82fd9e7e28b5d5fa4f1cc89613cb6b9fe9d97"},
+]
+redis = [
+    {file = "redis-3.5.2-py2.py3-none-any.whl", hash = "sha256:2ef11f489003f151777c064c5dbc6653dfb9f3eade159bcadc524619fddc2242"},
+    {file = "redis-3.5.2.tar.gz", hash = "sha256:6d65e84bc58091140081ee9d9c187aab0480097750fac44239307a3bdf0b1251"},
+]

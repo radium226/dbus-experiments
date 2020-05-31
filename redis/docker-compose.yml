@@ -1,0 +1,38 @@
+version: "3"
+services:
+  
+  streamer:
+    build: 
+      context: "."
+      args:
+        UID: "${UID}"
+        GID: "${GID}"
+    image: "streaming:0.1.0"
+    user: "${UID}:${GID}"
+    command: ["stream", "--redis-host='redis'", "--redis-port=6379", "/videos/ocean.mp4", "1920x1012"]
+    volumes:
+    - ".:/videos:rw"
+    depends_on:
+    - "redis"
+
+  player:
+    build: 
+      context: "."
+      args:
+        UID: "${UID}"
+        GID: "${GID}"
+    image: "streaming:0.1.0"
+    user: "${UID}:${GID}"
+    command: ["play", "--redis-host='redis'", "--redis-port=6379" ,"1920x1012"]
+    depends_on:
+    - "redis"
+    environment:
+      DISPLAY: "${DISPLAY}"
+    volumes:
+    - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    - "/dev/dri:/dev/dri"
+
+  redis:
+    image: "redis:6.0-alpine"
+    ports:
+    - "6379:6379"
